@@ -15,7 +15,7 @@ class jogada {
     }
 
     get invalida() {
-        return !this.valida
+        return !this.valida;
     }
 }
 
@@ -37,6 +37,7 @@ class jogoDaVelha {
 
     jogar(jogada) {
         this.#processarJogada(jogada);
+        this.#trocarJogador();
     }
     
     #processarJogada(jogada) {
@@ -67,16 +68,16 @@ class jogoDaVelha {
         if(this.vencedor) {
             return false;
         }
-        return true
-    }
-
-    #campo(linha, coluna) {
-        return this.tabuleiro[linha - 1 ][ coluna - 1 ]
+        return true;
     }
 
     #campoOcupado(jogada) {
         let { linha, coluna } = jogada;
         return this.#campo(linha, coluna) !== null;
+    }
+
+    #campo(linha, coluna) {
+        return this.tabuleiro[linha - 1][coluna - 1]
     }
 
     #trocarJogador() {
@@ -86,7 +87,7 @@ class jogoDaVelha {
     }
 
     #adicionar(jogada) {
-        let {linha, coluna} = jogada;
+        let { linha, coluna } = jogada;
         this.tabuleiro[linha - 1][coluna - 1] = this.jogadorAtual.simbolo
     }
 
